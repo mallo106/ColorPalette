@@ -196,5 +196,30 @@ const aColorPalette = [
 	2290847231, 1970830335, 1667656447, 1398168319, 858726911, 556212735, 824581631, 1043017471, 270016767, 1027159551
 ];
 
+let aDistance = 256/8;
+let aColors = [];
 
-module.exports = aColorPalette;
+for (let r = 0; r <= 256; r++)
+{
+	if (r % aDistance === 0)
+	{
+		for (let g = 0; g <= 256; g++)
+		{
+			if (g % aDistance === 0)
+			{
+				for (let b = 0; b <= 256; b++)
+				{
+					if (b % aDistance === 0)
+					{
+						const aR = r > 0xff ? 0xff : r;
+						const aG = g > 0xff ? 0xff : g;
+						const aB = b > 0xff ? 0xff : b;
+						aColors.push(rgbToInt(aR,aG,aB));
+					}
+				}
+			}
+		}
+	}
+}
+
+module.exports = aColors;
